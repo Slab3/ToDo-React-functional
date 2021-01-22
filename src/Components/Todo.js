@@ -45,6 +45,15 @@ function Todo() {
         inputReset();
     }
 
+    function deleteItem(id) {
+        setList(() => list = {
+            inputText: list.inputText.filter((el) => {
+                return el.id !== id;
+            })
+        });
+        window.localStorage.removeItem('inputText')
+    }
+
     function checkedItem(id) {
         list.inputText.map((el) => {
             if (el.id === id) {
@@ -54,15 +63,6 @@ function Todo() {
             return el;
         })
         setList(list={inputText:[...list.inputText]});
-    }
-
-    function deleteItem(id) {
-        setList(() => list = {
-            inputText: list.inputText.filter((el) => {
-                return el.id !== id;
-            })
-        });
-        window.localStorage.removeItem('inputText')
     }
 
     return (
